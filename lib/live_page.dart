@@ -17,7 +17,7 @@ class LivePage extends StatelessWidget {
         appID: appID,// Fill in the appID that you get from ZEGOCLOUD Admin Console.
         appSign: appSign,// Fill in the appSign that you get from ZEGOCLOUD Admin Console.
         userID: userID,
-        userName: 'user_name',
+        userName: '$name',
         liveID: liveID,
         config: isHost
             ? ZegoUIKitPrebuiltLiveStreamingConfig.host()
