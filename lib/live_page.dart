@@ -3,9 +3,10 @@ import 'package:zego_uikit_prebuilt_live_streaming/zego_uikit_prebuilt_live_stre
 
 class LivePage extends StatelessWidget {
   final String liveID;
+  final String userID;
   final bool isHost;
 
-  const LivePage({Key? key, required this.liveID, this.isHost = false}) : super(key: key);
+  const LivePage({Key? key, required this.liveID, this.isHost = false,required this.userID}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class LivePage extends StatelessWidget {
       child: ZegoUIKitPrebuiltLiveStreaming(
         appID: 1,// Fill in the appID that you get from ZEGOCLOUD Admin Console.
         appSign: "yourAppSign",// Fill in the appSign that you get from ZEGOCLOUD Admin Console.
-        userID: 'user_id',
+        userID: userID,
         userName: 'user_name',
         liveID: liveID,
         config: isHost

@@ -11,8 +11,9 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   /// Users who use the same liveID can join the same live streaming.
-  final liveTextCtrl = TextEditingController(text: Random().nextInt(10000).toString());
-  var localUserID = '1';
+  final liveTextCtrl = TextEditingController();
+  final userIDController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,32 +28,33 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('User ID:$localUserID'),
+            Text('User ID:${userIDController.text}'),
             const Text('Please test with two or more devices'),
-            TextFormField(
-              controller: liveTextCtrl,
-              decoration: const InputDecoration(labelText: 'join a live by id'),
-            ),
+            TextFormField(controller: userIDController, decoration: const InputDecoration(labelText: 'User ID'),),
+            const SizedBox(height: 20,),
+            TextFormField(controller: liveTextCtrl, decoration: const InputDecoration(labelText: 'Live ID'),),
             const SizedBox(height: 20),
             // click me to navigate to LivePage
             ElevatedButton(
-              style: buttonStyle,
+
               child: const Text('Start a live'),
               onPressed: () => jumpToLivePage(
                 context,
                 liveID: liveTextCtrl.text.trim(),
                 isHost: true,
+                userID: userIDController.text.trim(),
               ),
             ),
             const SizedBox(height: 20),
             // click me to navigate to LivePage
             ElevatedButton(
-              style: buttonStyle,
+
               child: const Text('Watch a live'),
               onPressed: () => jumpToLivePage(
                 context,
                 liveID: liveTextCtrl.text.trim(),
                 isHost: false,
+                userID: userIDController.text.trim(),
               ),
             ),
           ],
@@ -61,12 +63,11 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void jumpToLivePage(BuildContext context,
-      {required String liveID, required bool isHost}) {
+  void jumpToLivePage(BuildContext context, {required String liveID, required bool isHost,required String userID}) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => LivePage(liveID: liveID, isHost: isHost),
+        builder: (context) => LivePage(liveID: liveID, isHost: isHost, userID: userID,),
       ),
     );
   }
