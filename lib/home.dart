@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
   /// Users who use the same liveID can join the same live streaming.
   final liveTextCtrl = TextEditingController();
   final userIDController = TextEditingController();
+  final nameController = TextEditingController();
 
 
   @override
@@ -32,6 +33,8 @@ class HomePage extends StatelessWidget {
             const Text('Please test with two or more devices'),
             TextFormField(controller: userIDController, decoration: const InputDecoration(labelText: 'User ID'),),
             const SizedBox(height: 20,),
+            TextFormField(controller: nameController, decoration: const InputDecoration(labelText: 'Name'),),
+            const SizedBox(height: 20),
             TextFormField(controller: liveTextCtrl, decoration: const InputDecoration(labelText: 'Live ID'),),
             const SizedBox(height: 20),
             // click me to navigate to LivePage
@@ -43,6 +46,7 @@ class HomePage extends StatelessWidget {
                 liveID: liveTextCtrl.text.trim(),
                 isHost: true,
                 userID: userIDController.text.trim(),
+                name: nameController.text.trim(),
               ),
             ),
             const SizedBox(height: 20),
@@ -55,6 +59,7 @@ class HomePage extends StatelessWidget {
                 liveID: liveTextCtrl.text.trim(),
                 isHost: false,
                 userID: userIDController.text.trim(),
+                name: nameController.text.trim(),
               ),
             ),
           ],
@@ -63,11 +68,11 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void jumpToLivePage(BuildContext context, {required String liveID, required bool isHost,required String userID}) {
+  void jumpToLivePage(BuildContext context, {required String liveID, required bool isHost,required String userID,required String name}) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => LivePage(liveID: liveID, isHost: isHost, userID: userID,),
+        builder: (context) => LivePage(liveID: liveID, isHost: isHost, userID: userID, name: name,),
       ),
     );
   }
