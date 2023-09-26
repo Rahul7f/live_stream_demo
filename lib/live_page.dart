@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:live_stream_demo/constant.dart';
 import 'package:zego_uikit_prebuilt_live_streaming/zego_uikit_prebuilt_live_streaming.dart';
+import 'package:zego_uikit_signaling_plugin/zego_uikit_signaling_plugin.dart';
 
 class LivePage extends StatelessWidget {
   final String liveID;
@@ -17,11 +18,15 @@ class LivePage extends StatelessWidget {
         appID: appID,// Fill in the appID that you get from ZEGOCLOUD Admin Console.
         appSign: appSign,// Fill in the appSign that you get from ZEGOCLOUD Admin Console.
         userID: userID,
-        userName: '$name',
+        userName: name,
         liveID: liveID,
         config: isHost
-            ? ZegoUIKitPrebuiltLiveStreamingConfig.host()
-            : ZegoUIKitPrebuiltLiveStreamingConfig.audience(),
+            ? ZegoUIKitPrebuiltLiveStreamingConfig.host(
+          plugins: [ZegoUIKitSignalingPlugin()],
+        )
+            : ZegoUIKitPrebuiltLiveStreamingConfig.audience(
+          plugins: [ZegoUIKitSignalingPlugin()],
+        ),
       ),
     );
   }

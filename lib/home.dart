@@ -69,6 +69,11 @@ class HomePage extends StatelessWidget {
   }
 
   void jumpToLivePage(BuildContext context, {required String liveID, required bool isHost,required String userID,required String name}) {
+    print("liveID:$liveID");
+    print("isHost:$isHost");
+    print("userID:$userID");
+    print("name:$name");
+
     Navigator.push(
       context,
       MaterialPageRoute(

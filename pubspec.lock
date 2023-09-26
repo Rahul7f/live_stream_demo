@@ -642,6 +642,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.21.0"
+  zego_uikit_signaling_plugin:
+    dependency: "direct main"
+    description:
+      name: zego_uikit_signaling_plugin
+      sha256: "49974bdc0cebc83b908686b378c3b85c4a758c99a0e1e9277e6ffe285929b72b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.2"
+  zego_zim:
+    dependency: transitive
+    description:
+      name: zego_zim
+      sha256: "7389d1b1a86853a0d583a78a2db815456c1ba572c0ddce581f5ede3e5ed60205"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.10.0+4"
   zego_zpns:
     dependency: transitive
     description:
